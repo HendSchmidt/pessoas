@@ -1,6 +1,6 @@
 package com.br.pessoas.domain.entity;
 
-public class EnderecoEntity {
+public class AdressEntity {
     private String cep;
     private String logradouro;
     private String complemento;

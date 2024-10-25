@@ -1,5 +1,6 @@
 package com.br.pessoas.app.rest;
 
+import com.br.pessoas.app.dto.PersonRequest;
 import com.br.pessoas.app.dto.PersonResponse;
 import com.br.pessoas.app.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,12 +17,12 @@ public class PersonResource {
     private PersonService service;
 
     @PostMapping
-    public ResponseEntity<PersonResponse> createPerson(@RequestBody PersonResponse dto) {
-        return ResponseEntity.ok(service.createPerson(dto));
+    public ResponseEntity<PersonResponse> createPerson(@RequestBody PersonRequest request) {
+        return ResponseEntity.ok(service.createPerson(request));
     }
 
     @GetMapping
-    public ResponseEntity<List<PersonResponse>> getAllPerson(){
-        return ResponseEntity.ok(service.getAllPerson());
+    public ResponseEntity<String> getAllPerson(){
+        return ResponseEntity.ok("service.getAllPerson()");
     }
 }

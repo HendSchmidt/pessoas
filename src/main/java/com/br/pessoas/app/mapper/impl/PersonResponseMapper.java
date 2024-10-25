@@ -3,20 +3,26 @@ package com.br.pessoas.app.mapper.impl;
 import com.br.pessoas.app.dto.PersonResponse;
 import com.br.pessoas.app.mapper.Mapper;
 import com.br.pessoas.domain.entity.PersonEntity;
-import org.springframework.beans.factory.ListableBeanFactoryExtensionsKt;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
 public class PersonResponseMapper implements Mapper<PersonEntity, PersonResponse> {
+
+    @Autowired
+    private AdressResponseMapper adressMapper;
+
     @Override
-    public PersonEntity mapperToOut(PersonResponse response) {
-        return null;
+    public PersonEntity mapperToTarget(PersonResponse response) {
+        return new PersonEntity(response.getId(), response.getNome()
+        , response.getSobrenome(), response.getCpf(), response.getIdade()
+            , adressMapper.mapperToTarget(response.getAdressResponseList().stream().toList()));
     }
 
     @Override
-    public PersonResponse mapperToIn(PersonEntity entity) {
-        PersonEntity person= new PersonEntity();
-
-        return null;
+    public PersonResponse mapperToSource(PersonEntity entity) {
+        return new PersonResponse(entity.getId(), entity.getNome()
+        , entity.getSobrenome(), entity.getCpf(), entity.getIdade()
+                ,adressMapper.mapperToSource(entity.getAdressEntityList().stream().toList()));
     }
 }

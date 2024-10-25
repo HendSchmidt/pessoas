@@ -1,23 +1,24 @@
 package com.br.pessoas.app.mapper;
 
+import org.springframework.stereotype.Component;
+
 import java.util.List;
 import java.util.stream.Collectors;
 
-
 public interface Mapper <Target, Source>{
-    Target mapperToOut(Source source);
-    Source mapperToIn(Target target
+    Target mapperToTarget(Source source);
+    Source mapperToSource(Target target
     );
 
-    default List<Target> mapperToOut(List<Source> sourceList) {
+    default List<Target> mapperToTarget(List<Source> sourceList) {
         return sourceList.parallelStream()
-                .map(this::mapperToOut)
+                .map(this::mapperToTarget)
                 .collect(Collectors.toList());
     }
 
-    default List<Source> mapperToIn(List<Target> outList) {
+    default List<Source> mapperToSource(List<Target> outList) {
         return outList.parallelStream()
-                .map(this::mapperToIn)
+                .map(this::mapperToSource)
                 .collect(Collectors.toList());
     }
 }

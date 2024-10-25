@@ -1,6 +1,8 @@
 package com.br.pessoas.app.service;
 
+import com.br.pessoas.app.dto.PersonRequest;
 import com.br.pessoas.app.dto.PersonResponse;
+import com.br.pessoas.app.mapper.impl.PersonResponseMapper;
 import com.br.pessoas.app.mapper.impl.PersonResquestMapper;
 import com.br.pessoas.domain.useCase.CreatePersonUseCase;
 import com.br.pessoas.infra.dataProvider.strategy.enumerator.DataProviderStrategyEnum;
@@ -17,13 +19,15 @@ public class PersonService {
     private AdressService adressService;
 
     @Autowired
-    private PersonResquestMapper mapper;
+    private PersonResquestMapper requestMapper;
+
+    @Autowired
+    private PersonResponseMapper responseMapper;
 
 
-    public PersonResponse createPerson(PersonResponse dto){
+    public PersonResponse createPerson(PersonRequest request){
        final CreatePersonUseCase create = new CreatePersonUseCase(DataProviderStrategyEnum.REPOSITORY);
-       // create.createPerson(mapper.mapperToOut(dto));
-        return new PersonResponse();
+        return responseMapper.mapperToSource(create.createPerson(requestMapper.mapperToTarget(request)));
     }
 
     public List<PersonResponse> getAllPerson(){

@@ -17,7 +17,7 @@ public class PersonResource {
 
     @PostMapping
     public ResponseEntity<PersonResponse> createPerson(@RequestBody PersonResponse dto) {
-        return ResponseEntity.ok(dto);
+        return ResponseEntity.ok(service.createPerson(dto));
     }
 
     @GetMapping

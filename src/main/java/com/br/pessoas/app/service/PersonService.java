@@ -1,8 +1,7 @@
 package com.br.pessoas.app.service;
 
 import com.br.pessoas.app.dto.PersonResponse;
-import com.br.pessoas.app.mapper.Mapper;
-import com.br.pessoas.domain.entity.PersonEntity;
+import com.br.pessoas.app.mapper.impl.PersonResquestMapper;
 import com.br.pessoas.domain.useCase.CreatePersonUseCase;
 import com.br.pessoas.infra.dataProvider.strategy.enumerator.DataProviderStrategyEnum;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,12 +17,12 @@ public class PersonService {
     private AdressService adressService;
 
     @Autowired
-    private Mapper<PersonEntity, PersonResponse> mapper;
+    private PersonResquestMapper mapper;
 
 
-    public PersonResponse createPersonDto(PersonResponse dto){
-        CreatePersonUseCase create = new CreatePersonUseCase(DataProviderStrategyEnum.REPOSITORY);
-        create.createPerson(mapper.mapperToOut(dto));
+    public PersonResponse createPerson(PersonResponse dto){
+       final CreatePersonUseCase create = new CreatePersonUseCase(DataProviderStrategyEnum.REPOSITORY);
+       // create.createPerson(mapper.mapperToOut(dto));
         return new PersonResponse();
     }
 

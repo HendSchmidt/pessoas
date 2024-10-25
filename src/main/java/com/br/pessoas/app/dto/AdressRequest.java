@@ -1,6 +1,11 @@
 package com.br.pessoas.app.dto;
 
-public class AdressResponse {
+import com.fasterxml.jackson.annotation.JsonInclude;
+import lombok.Data;
+
+@Data
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class AdressRequest {
     private Long id;
     private String cep;
     private String logradouro;

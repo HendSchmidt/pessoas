@@ -3,7 +3,8 @@ package com.br.pessoas.useCase;
 import com.br.pessoas.domain.entity.PersonEntity;
 import com.br.pessoas.infra.converter.impl.person.PersonEntityToPersonModelConverter;
 import com.br.pessoas.infra.converter.impl.person.PersonModelToPersonEntityConverter;
-import com.br.pessoas.infra.dataProvider.DataProvider;
+import com.br.pessoas.infra.dataProvider.repository.PersonRepository;
+import com.br.pessoas.infra.dataProvider.repository.impl.PersonDataProviderRepository;
 
 import java.util.List;
 
@@ -16,8 +17,8 @@ public class GetAllPersonUseCase {
         this.toModel = new PersonEntityToPersonModelConverter();
     }
 
-    public List<PersonEntity> getAllPerson (DataProvider dataProvider){
-        return toEntity.convertList(dataProvider.getAll());
+    public List<PersonEntity> getAllPerson (PersonDataProviderRepository repository){
+        return toEntity.convertList(repository.getAll());
     }
 
 }

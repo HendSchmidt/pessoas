@@ -3,11 +3,10 @@ package com.br.pessoas.useCase;
 import com.br.pessoas.domain.entity.AdressEntity;
 import com.br.pessoas.infra.converter.impl.adress.AdressEntityToAdressModelConverter;
 import com.br.pessoas.infra.converter.impl.adress.AdressModelToAdressEntityConverter;
-import com.br.pessoas.infra.dataProvider.DataProvider;
-import com.br.pessoas.infra.dataProvider.repository.model.AdressModel;
+import com.br.pessoas.infra.dataProvider.repository.AdressRepository;
+import com.br.pessoas.infra.dataProvider.repository.impl.AdressDataProviderRepository;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class GetAdressUseCase {
 
@@ -19,7 +18,11 @@ public class GetAdressUseCase {
         this.toEntity = new AdressModelToAdressEntityConverter();
     }
 
-    public AdressEntity getAdress (Long personId, DataProvider dataProvider) {
-        return toEntity.convert((AdressModel) dataProvider.get(personId));
+    public AdressEntity getAdress (Long id, AdressDataProviderRepository repository) {
+        return toEntity.convert( repository.get(id));
+    }
+
+    public List<AdressEntity> getAllPersonAdress(Long personId,AdressDataProviderRepository repository){
+        return toEntity.convertList(repository.getAllPersonAdress(personId));
     }
 }

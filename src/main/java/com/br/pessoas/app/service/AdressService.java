@@ -4,8 +4,10 @@ import com.br.pessoas.app.dto.AdressRequest;
 import com.br.pessoas.app.dto.AdressResponse;
 import com.br.pessoas.app.mapper.impl.AdressRequestMapper;
 import com.br.pessoas.app.mapper.impl.AdressResponseMapper;
+import com.br.pessoas.domain.entity.AdressEntity;
 import com.br.pessoas.infra.dataProvider.repository.impl.AdressDataProviderRepository;
 import com.br.pessoas.useCase.CreateAdressUseCase;
+import com.br.pessoas.useCase.GetAdressUseCase;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -32,7 +34,9 @@ public class AdressService {
         return requestList.stream().map(this::createAdress).toList();
     }
 
-    public List<AdressResponse> getAddressForPerson(Long personId){
-        return null;
+    public List<AdressEntity> getAllPersonAdress(Long personId){
+        final GetAdressUseCase get = new GetAdressUseCase();
+        return get.getAllPersonAdress(personId, repository);
     }
+
 }

@@ -7,7 +7,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
-//@EnableJpaRepositories(basePackages = "br.com.pessoas.infra.dataProvier.repository")
+@EnableJpaRepositories(basePackages = "com.br.pessoas.infra.dataProvider.repository")
 public class PessoasApplication {
 
 	public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package com.br.pessoas.infra.converter.impl;
+package com.br.pessoas.infra.converter.impl.person;
 
 import com.br.pessoas.domain.entity.PersonEntity;
 import com.br.pessoas.infra.converter.Converter;

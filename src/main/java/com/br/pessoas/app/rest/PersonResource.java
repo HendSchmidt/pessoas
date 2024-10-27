@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/v1/person")
+@RequestMapping("/api/v1/person")
 public class PersonResource {
 
     @Autowired
@@ -22,7 +22,7 @@ public class PersonResource {
     }
 
     @GetMapping
-    public ResponseEntity<String> getAllPerson(){
-        return ResponseEntity.ok("service.getAllPerson()");
+    public ResponseEntity<List<PersonResponse>> getAllPerson(){
+        return ResponseEntity.ok(service.getAllPerson());
     }
 }

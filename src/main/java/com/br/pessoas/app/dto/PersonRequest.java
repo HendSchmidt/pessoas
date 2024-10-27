@@ -8,7 +8,6 @@ import java.util.Collection;
 
 @Data
 @AllArgsConstructor
-@JsonInclude(JsonInclude.Include.NON_NULL)
 public class PersonRequest {
     private Long id;
     private String nome;

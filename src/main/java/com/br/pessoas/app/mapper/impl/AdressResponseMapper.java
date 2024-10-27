@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 public class AdressResponseMapper implements Mapper<AdressEntity, AdressResponse> {
     @Override
     public AdressEntity mapperToTarget(AdressResponse response) {
-        return new AdressEntity(response.getId()
+        return new AdressEntity(response.getPersonId(), response.getId()
                 ,response.getCep(), response.getLogradouro()
                 ,response.getComplemento(), response.getBairro()
                 ,response.getNumero(), response.getCidade(), response.getUf());
@@ -18,7 +18,7 @@ public class AdressResponseMapper implements Mapper<AdressEntity, AdressResponse
 
     @Override
     public AdressResponse mapperToSource(AdressEntity entity) {
-        return new AdressResponse(entity.getId(), entity.getCep()
+        return new AdressResponse(entity.getPersonId(), entity.getId(), entity.getCep()
                 , entity.getLogradouro(), entity.getComplemento(), entity.getBairro()
                 , entity.getNumero(), entity.getCidade(), entity.getUf());
     }

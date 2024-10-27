@@ -5,20 +5,20 @@ import com.br.pessoas.infra.dataProvider.repository.model.PersonModel;
 
 import java.util.List;
 
-public class PersonDataProviderClient implements DataProvider {
+public class PersonDataProviderClient implements DataProvider<PersonModel> {
 
     @Override
-    public PersonModel savePerson(PersonModel source) {
+    public PersonModel save(PersonModel source) {
         return null;
     }
 
     @Override
-    public PersonModel getPerson(PersonModel source) {
+    public PersonModel get(Long id) {
         return null;
     }
 
     @Override
-    public List<PersonModel> getAllPerson() {
+    public List<PersonModel> getAll() {
         return List.of();
     }
 }

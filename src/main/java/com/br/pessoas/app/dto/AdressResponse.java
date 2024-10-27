@@ -6,8 +6,9 @@ import lombok.Data;
 
 @Data
 @AllArgsConstructor
-@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonInclude(content = JsonInclude.Include.NON_NULL, value = JsonInclude.Include.NON_EMPTY)
 public class AdressResponse {
+    private Long personId;
     private Long id;
     private String cep;
     private String logradouro;

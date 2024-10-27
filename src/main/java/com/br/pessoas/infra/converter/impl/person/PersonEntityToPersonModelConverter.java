@@ -1,4 +1,4 @@
-package com.br.pessoas.infra.converter.impl;
+package com.br.pessoas.infra.converter.impl.person;
 
 import com.br.pessoas.domain.entity.PersonEntity;
 import com.br.pessoas.infra.converter.Converter;
@@ -13,7 +13,6 @@ public class PersonEntityToPersonModelConverter implements Converter<PersonModel
     public PersonModel convert(PersonEntity source) {
         return new PersonModel(
                 source.getNome(), source.getSobrenome(),
-                source.getCpf(),source.getIdade(),
-                List.of());
+                source.getCpf(),source.getIdade());
     }
 }

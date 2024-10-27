@@ -22,6 +22,4 @@ public class PersonModel extends AbstractPersistable<Long> {
     private String sobrenome;
     private String cpf;
     private Integer idade;
-    @OneToMany
-    private Collection<AdressModel> adressModelList;
 }

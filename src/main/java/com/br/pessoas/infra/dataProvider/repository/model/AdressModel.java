@@ -11,6 +11,7 @@ import org.springframework.data.jpa.domain.AbstractPersistable;
 @AllArgsConstructor
 @NoArgsConstructor
 public class AdressModel extends AbstractPersistable<Long> {
+    private Long personId;
     private String cep;
     private String logradouro;
     private String complemento;

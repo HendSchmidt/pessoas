@@ -5,8 +5,8 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 @Component
-public interface DataProvider {
-    PersonModel savePerson(PersonModel source);
-    PersonModel  getPerson(PersonModel source);
-    List<PersonModel> getAllPerson ();
+public interface DataProvider<Source> {
+    Source save(Source source);
+    Source get(Long id);
+    List<Source> getAll();
 }

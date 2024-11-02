@@ -3,8 +3,7 @@ package com.br.pessoas.useCase;
 import com.br.pessoas.domain.entity.PersonEntity;
 import com.br.pessoas.infra.converter.impl.person.PersonEntityToPersonModelConverter;
 import com.br.pessoas.infra.converter.impl.person.PersonModelToPersonEntityConverter;
-import com.br.pessoas.infra.dataProvider.repository.impl.PersonDataProviderRepository;
-import com.br.pessoas.infra.dataProvider.repository.model.PersonModel;
+import com.br.pessoas.infra.dataProvider.repository.impl.PersonRepositoryImpl;
 
 public class GetPersonUseCase {
 
@@ -16,7 +15,7 @@ public class GetPersonUseCase {
         this.toModel = new PersonEntityToPersonModelConverter();
     }
 
-    public PersonEntity getPerson (Long id, PersonDataProviderRepository dataProvider){
+    public PersonEntity getPerson (Long id, PersonRepositoryImpl dataProvider){
         return toEntity.convert(dataProvider.get(id));
     }
 }

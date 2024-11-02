@@ -1,24 +1,24 @@
 package com.br.pessoas.app.mapper.impl;
 
-import com.br.pessoas.app.dto.AdressRequest;
+import com.br.pessoas.app.dto.AddressRequest;
 import com.br.pessoas.app.mapper.Mapper;
-import com.br.pessoas.domain.entity.AdressEntity;
+import com.br.pessoas.domain.entity.AddressEntity;
 import org.springframework.stereotype.Component;
 
 @Component
-public class AdressRequestMapper implements Mapper<AdressEntity, AdressRequest> {
+public class AdressRequestMapper implements Mapper<AddressEntity, AddressRequest> {
 
     @Override
-    public AdressEntity mapperToTarget(AdressRequest request) {
-        return new AdressEntity(request.getPersonId(), request.getId()
+    public AddressEntity mapperToTarget(AddressRequest request) {
+        return new AddressEntity(request.getPersonId(), request.getId()
         ,request.getCep(), request.getLogradouro()
         ,request.getComplemento(), request.getBairro()
         ,request.getNumero(), request.getCidade(), request.getUf());
     }
 
     @Override
-    public AdressRequest mapperToSource(AdressEntity entity) {
-        return new AdressRequest(entity.getPersonId(), entity.getId(), entity.getCep()
+    public AddressRequest mapperToSource(AddressEntity entity) {
+        return new AddressRequest(entity.getPersonId(), entity.getId(), entity.getCep()
         , entity.getLogradouro(), entity.getComplemento(), entity.getBairro()
         , entity.getNumero(), entity.getCidade(), entity.getUf());
     }

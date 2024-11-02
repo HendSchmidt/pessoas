@@ -8,12 +8,12 @@ public class PersonEntity {
     private String sobrenome;
     private String cpf;
     private Integer idade;
-    private Collection<AdressEntity> adressEntityList;
+    private Collection<AddressEntity> adressEntityList;
 
     public PersonEntity() {
     }
 
-    public PersonEntity(Long id, String nome, String sobrenome, String cpf, Integer idade, Collection<AdressEntity> adressEntityList) {
+    public PersonEntity(Long id, String nome, String sobrenome, String cpf, Integer idade, Collection<AddressEntity> adressEntityList) {
         this.id = id;
         this.nome = nome;
         this.sobrenome = sobrenome;
@@ -23,7 +23,7 @@ public class PersonEntity {
     }
 
     public Long getId() {
-        return id;
+        return this.id;
     }
 
     public void setId(Long id) {
@@ -62,11 +62,11 @@ public class PersonEntity {
         this.idade = idade;
     }
 
-    public Collection<AdressEntity> getAdressEntityList() {
+    public Collection<AddressEntity> getAdressEntityList() {
         return adressEntityList;
     }
 
-    public void setAdressEntityList(Collection<AdressEntity> adressEntityList) {
+    public void setAdressEntityList(Collection<AddressEntity> adressEntityList) {
         this.adressEntityList = adressEntityList;
     }
 

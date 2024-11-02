@@ -1,6 +1,6 @@
 package com.br.pessoas.domain.entity;
 
-public class AdressEntity {
+public class AddressEntity {
     private Long personId;
     private Long id;
     private String cep;
@@ -11,10 +11,10 @@ public class AdressEntity {
     private String cidade; //localidade
     private String uf;
 
-    public AdressEntity() {
+    public AddressEntity() {
     }
 
-    public AdressEntity(Long personId, Long id, String cep, String logradouro, String complemento, String bairro, String numero, String cidade, String uf) {
+    public AddressEntity(Long personId, Long id, String cep, String logradouro, String complemento, String bairro, String numero, String cidade, String uf) {
         this.personId = personId;
         this.id = id;
         this.cep = cep;

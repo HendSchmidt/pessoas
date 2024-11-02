@@ -15,6 +15,6 @@ public class PersonResponse {
     private String sobrenome;
     private String cpf;
     private Integer idade;
-    private Collection<AdressResponse> adressResponseList;
+    private Collection<AddressResponse> adressResponseList;
 
 }

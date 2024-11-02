@@ -5,8 +5,6 @@ import com.br.pessoas.infra.converter.Converter;
 import com.br.pessoas.infra.dataProvider.repository.model.PersonModel;
 import org.springframework.stereotype.Component;
 
-import java.util.List;
-
 @Component
 public class PersonEntityToPersonModelConverter implements Converter<PersonModel, PersonEntity> {
     @Override

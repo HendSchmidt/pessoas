@@ -1,7 +1,6 @@
 package com.br.pessoas.app.mapper.impl;
 
 import com.br.pessoas.app.dto.PersonRequest;
-import com.br.pessoas.app.dto.PersonResponse;
 import com.br.pessoas.app.mapper.Mapper;
 import com.br.pessoas.domain.entity.PersonEntity;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -3,15 +3,15 @@ package com.br.pessoas.infra.dataProvider.repository.impl;
 import com.br.pessoas.infra.dataProvider.repository.PersonRepository;
 import com.br.pessoas.infra.dataProvider.repository.model.PersonModel;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 
 @Component
-public class PersonDataProviderRepository  {
-
-   @Autowired
-   private PersonRepository repository;
+public class PersonRepositoryImpl {
+    @Autowired @Lazy
+    private PersonRepository repository;
 
     public PersonModel save(PersonModel source) {
         return repository.save(source);

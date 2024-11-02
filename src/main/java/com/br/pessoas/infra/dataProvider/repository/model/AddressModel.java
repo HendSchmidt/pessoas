@@ -1,8 +1,10 @@
 package com.br.pessoas.infra.dataProvider.repository.model;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
 @Entity
@@ -10,7 +12,7 @@ import org.springframework.data.jpa.domain.AbstractPersistable;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class AdressModel extends AbstractPersistable<Long> {
+public class AddressModel extends AbstractPersistable<Long> {
     private Long personId;
     private String cep;
     private String logradouro;

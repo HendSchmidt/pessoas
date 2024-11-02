@@ -7,7 +7,7 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 @JsonInclude(content = JsonInclude.Include.NON_NULL, value = JsonInclude.Include.NON_EMPTY)
-public class AdressResponse {
+public class AddressResponse {
     private Long personId;
     private Long id;
     private String cep;
@@ -15,6 +15,6 @@ public class AdressResponse {
     private String complemento;
     private String bairro;
     private String numero;
-    private String cidade; //localidade
+    private String cidade;
     private String uf;
 }

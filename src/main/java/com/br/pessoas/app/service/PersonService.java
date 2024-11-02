@@ -10,9 +10,11 @@ import com.br.pessoas.domain.entity.AddressEntity;
 import com.br.pessoas.infra.dataProvider.repository.impl.PersonRepositoryImpl;
 import com.br.pessoas.useCase.CreatePersonUseCase;
 import com.br.pessoas.useCase.GetAllPersonUseCase;
+import jakarta.annotation.Nonnull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.validation.annotation.Validated;
 
 import java.util.List;
 

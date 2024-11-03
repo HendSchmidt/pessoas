@@ -1,6 +1,5 @@
 package com.br.pessoas.app.rest;
 
-import com.br.pessoas.app.dto.AddressRequest;
 import com.br.pessoas.app.dto.PersonRequest;
 import com.br.pessoas.app.dto.PersonResponse;
 import com.br.pessoas.app.service.PersonService;
@@ -12,8 +11,6 @@ import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-
-import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

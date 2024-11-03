@@ -13,7 +13,6 @@ public class PersonModelToPersonEntityConverter implements Converter<PersonEntit
     public PersonEntity convert(PersonModel source) {
         return  new PersonEntity(source.getId(),
                 source.getNome(), source.getSobrenome(),
-                source.getCpf(),source.getIdade(),
-                List.of());
+                source.getCpf(),source.getIdade());
     }
 }

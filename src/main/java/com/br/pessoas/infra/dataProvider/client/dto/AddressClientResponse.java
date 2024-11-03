@@ -1,4 +1,4 @@
-package com.br.pessoas.infra.dataProvider.client.response;
+package com.br.pessoas.infra.dataProvider.client.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

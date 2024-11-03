@@ -1,5 +1,6 @@
 package com.br.pessoas.app.rest;
 
+import com.br.pessoas.app.dto.AddressRequest;
 import com.br.pessoas.app.dto.PersonRequest;
 import com.br.pessoas.app.dto.PersonResponse;
 import com.br.pessoas.app.service.PersonService;
@@ -24,5 +25,10 @@ public class PersonResource {
     @GetMapping
     public ResponseEntity<List<PersonResponse>> getAllPerson(){
         return ResponseEntity.ok(service.getAllPerson());
+    }
+
+    @PostMapping("/{personId}/address")
+    public ResponseEntity<PersonResponse> createPersonAddress(@PathVariable Long personId, @RequestBody AddressRequest request) {
+        return ResponseEntity.ok(service.createPersonAddress(personId, request));
     }
 }

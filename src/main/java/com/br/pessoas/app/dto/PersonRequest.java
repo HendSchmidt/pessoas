@@ -13,10 +13,8 @@ import java.util.Collection;
 @NoArgsConstructor
 public class PersonRequest {
     private Long id;
-    @Nonnull
     private String nome;
     private String sobrenome;
     private String cpf;
     private Integer idade;
-    private Collection<AddressRequest> adressRequestList;
 }

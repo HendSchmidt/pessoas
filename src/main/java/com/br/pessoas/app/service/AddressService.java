@@ -2,48 +2,41 @@ package com.br.pessoas.app.service;
 
 import com.br.pessoas.app.dto.AddressResponse;
 import com.br.pessoas.app.dto.AddressRequest;
-import com.br.pessoas.app.mapper.impl.AdressRequestMapper;
-import com.br.pessoas.app.mapper.impl.AdressResponseMapper;
-import com.br.pessoas.domain.entity.AddressEntity;
+import com.br.pessoas.app.mapper.impl.AddressResponseMapper;
 import com.br.pessoas.infra.dataProvider.client.AddressClient;
-import com.br.pessoas.infra.dataProvider.facade.GetAddressFacade;
-import com.br.pessoas.infra.dataProvider.repository.impl.AdressRepositoryImpl;
-import com.br.pessoas.useCase.CreateAddressUseCase;
+import com.br.pessoas.app.facade.CreateAddressFacade;
+import com.br.pessoas.infra.dataProvider.repository.impl.AddressRepositoryImpl;
+import com.br.pessoas.useCase.GetAddressUseCase;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Service
 public class AddressService {
+    @Autowired
+    private AddressResponseMapper responseMapper;
 
     @Autowired
-    private AdressRequestMapper requestMapper;
-
-    @Autowired
-    private AdressResponseMapper responseMapper;
-
-    @Autowired
-    private AdressRepositoryImpl repository;
+    private AddressRepositoryImpl repository;
 
     @Autowired
     private AddressClient client;
 
     @Autowired
-    private GetAddressFacade getAddressFacade;
+    private CreateAddressFacade getAddressFacade;
 
-    public AddressResponse createAddress(AddressRequest request){
-        final CreateAddressUseCase create = new CreateAddressUseCase();
-        return responseMapper.mapperToSource(create.createAdress(requestMapper.mapperToTarget(request), repository));
+    @Transactional
+    public AddressResponse createAddress(final Long personId,final AddressRequest request){
+        CreateAddressFacade createAddressFacade = new CreateAddressFacade();
+        createAddressFacade.setFacadeRules(repository, client, personId, request);
+        return responseMapper.mapperToSource(createAddressFacade.execute());
     }
 
-    public List<AddressResponse> createAddress(List<AddressRequest> requestList) {
-        return requestList.stream().map(this::createAddress).toList();
-    }
-
-    public List<AddressEntity> getAllPersonAddress(Long personId) {
-        getAddressFacade.setFacadeRules(repository, client, personId);
-        return getAddressFacade.execute();
+    public List<AddressResponse> getAllPersonAddress(Long personId) {
+        final GetAddressUseCase useCase = new GetAddressUseCase();
+        return responseMapper.mapperToSource(useCase.getAllPersonAddress(personId, repository));
     }
 
 }

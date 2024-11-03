@@ -1,4 +1,4 @@
-package com.br.pessoas.infra.dataProvider.facade;
+package com.br.pessoas.app.facade;
 
 import java.util.List;
 /**
@@ -17,5 +17,5 @@ public interface Facade <T> {
  *
  * @see List
  */
-	List<T> execute();
+	T execute();
 }

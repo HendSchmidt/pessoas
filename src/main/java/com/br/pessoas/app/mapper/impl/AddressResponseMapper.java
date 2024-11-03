@@ -6,7 +6,7 @@ import com.br.pessoas.domain.entity.AddressEntity;
 import org.springframework.stereotype.Component;
 
 @Component
-public class AdressResponseMapper implements Mapper<AddressEntity, AddressResponse> {
+public class AddressResponseMapper implements Mapper<AddressEntity, AddressResponse> {
     @Override
     public AddressEntity mapperToTarget(AddressResponse response) {
         return new AddressEntity(response.getPersonId(), response.getId()

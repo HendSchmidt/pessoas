@@ -1,25 +1,21 @@
 package com.br.pessoas.domain.entity;
 
-import java.util.Collection;
-
 public class PersonEntity {
     private Long id;
     private String nome;
     private String sobrenome;
     private String cpf;
     private Integer idade;
-    private Collection<AddressEntity> adressEntityList;
 
     public PersonEntity() {
     }
 
-    public PersonEntity(Long id, String nome, String sobrenome, String cpf, Integer idade, Collection<AddressEntity> adressEntityList) {
+    public PersonEntity(Long id, String nome, String sobrenome, String cpf, Integer idade) {
         this.id = id;
         this.nome = nome;
         this.sobrenome = sobrenome;
         this.cpf = cpf;
         this.idade = idade;
-        this.adressEntityList = adressEntityList;
     }
 
     public Long getId() {
@@ -62,13 +58,6 @@ public class PersonEntity {
         this.idade = idade;
     }
 
-    public Collection<AddressEntity> getAdressEntityList() {
-        return adressEntityList;
-    }
-
-    public void setAdressEntityList(Collection<AddressEntity> adressEntityList) {
-        this.adressEntityList = adressEntityList;
-    }
 
     @Override
     public String toString() {
@@ -78,7 +67,6 @@ public class PersonEntity {
                 ", sobrenome='" + sobrenome + '\'' +
                 ", cpf='" + cpf + '\'' +
                 ", idade=" + idade +
-                ", adressEntityList=" + adressEntityList +
                 '}';
     }
 }

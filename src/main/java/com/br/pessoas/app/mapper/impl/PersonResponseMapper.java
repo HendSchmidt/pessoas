@@ -10,19 +10,17 @@ import org.springframework.stereotype.Component;
 public class PersonResponseMapper implements Mapper<PersonEntity, PersonResponse> {
 
     @Autowired
-    private AdressResponseMapper adressMapper;
+    private AddressResponseMapper adressMapper;
 
     @Override
     public PersonEntity mapperToTarget(PersonResponse response) {
         return new PersonEntity(response.getId(), response.getNome()
-        , response.getSobrenome(), response.getCpf(), response.getIdade()
-            , adressMapper.mapperToTarget(response.getAdressResponseList().stream().toList()));
+        , response.getSobrenome(), response.getCpf(), response.getIdade());
     }
 
     @Override
     public PersonResponse mapperToSource(PersonEntity entity) {
         return new PersonResponse(entity.getId(), entity.getNome()
-        , entity.getSobrenome(), entity.getCpf(), entity.getIdade()
-                ,adressMapper.mapperToSource(entity.getAdressEntityList().stream().toList()));
+        , entity.getSobrenome(), entity.getCpf(), entity.getIdade());
     }
 }

@@ -18,7 +18,7 @@ public class AddressRepositoryImpl {
         return repository.save(source);
     }
 
-    public List<AddressModel> getAllPersonAdress(Long personId){
-        return repository.getAllPersonAdress(personId);
+    public List<AddressModel> findAllByPersonId(Long personId){
+        return repository.findAllByPersonId(personId);
     }
 }

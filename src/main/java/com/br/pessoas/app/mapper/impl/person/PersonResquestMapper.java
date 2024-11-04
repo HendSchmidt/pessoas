@@ -1,9 +1,8 @@
-package com.br.pessoas.app.mapper.impl;
+package com.br.pessoas.app.mapper.impl.person;
 
 import com.br.pessoas.app.dto.PersonRequest;
 import com.br.pessoas.app.mapper.Mapper;
 import com.br.pessoas.domain.entity.PersonEntity;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component

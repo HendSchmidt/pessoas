@@ -7,10 +7,10 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class PersonRequest {
-    private Long id;
-    private String nome;
-    private String sobrenome;
-    private String cpf;
-    private Integer idade;
+public class TelephoneRequest {
+	private Long id;
+	private Long personId;
+	private String countryCode;
+	private String stateCode;
+	private String phoneNumber;
 }

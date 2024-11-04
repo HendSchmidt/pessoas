@@ -1,9 +1,7 @@
 package com.br.pessoas.app.dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import java.util.Collection;
 
@@ -16,6 +14,8 @@ public class PersonResponse {
     private String cpf;
     private Integer idade;
     private Collection<AddressResponse> adressResponseList;
+    private Collection<EmailResponse> emailResponseList;
+    private Collection<TelephoneResponse> telephoneResponseList;
 
     public PersonResponse() {
     }

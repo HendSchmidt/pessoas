@@ -1,8 +1,6 @@
 package com.br.pessoas.app.rest;
 
-import com.br.pessoas.app.dto.AddressRequest;
-import com.br.pessoas.app.dto.PersonRequest;
-import com.br.pessoas.app.dto.PersonResponse;
+import com.br.pessoas.app.dto.*;
 import com.br.pessoas.app.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -28,7 +26,17 @@ public class PersonResource {
     }
 
     @PostMapping("/{personId}/address")
-    public ResponseEntity<PersonResponse> createPersonAddress(@PathVariable Long personId, @RequestBody AddressRequest request) {
+    public ResponseEntity<AddressResponse> createPersonAddress(@PathVariable Long personId, @RequestBody AddressRequest request) {
         return ResponseEntity.ok(service.createPersonAddress(personId, request));
+    }
+
+    @PostMapping("/{personId}/telephone")
+    public ResponseEntity<TelephoneResponse> createPersonTelephone(@PathVariable Long personId, @RequestBody TelephoneRequest request) {
+        return ResponseEntity.ok(service.createPersonTelephone(personId, request));
+    }
+
+    @PostMapping("/{personId}/email")
+    public ResponseEntity<EmailResponse> createPersonEmail(@PathVariable Long personId, @RequestBody EmailRequest request) {
+        return ResponseEntity.ok(service.createPersonEmail(personId, request));
     }
 }

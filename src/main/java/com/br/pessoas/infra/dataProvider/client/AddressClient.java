@@ -16,11 +16,15 @@ import java.util.Optional;
 @Component
 public class AddressClient {
 
-	@Autowired
 	private RestTemplate restTemplate;
-
-    @Autowired
 	private AddressClientResponseToAddressModel toAddressModel;
+
+
+	@Autowired
+	AddressClient(){
+		this.restTemplate = new RestTemplate();
+		this.toAddressModel = new AddressClientResponseToAddressModel();
+	}
 
 	public Optional<AddressModel> getAddress(String cep) {
 		try {

@@ -15,6 +15,4 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface PersonRepository extends JpaRepository<PersonModel, Long> {
-    // Não são necessários métodos adicionais para esta interface.
-    // O Spring Data JPA gerará automaticamente implementações para os métodos definidos.
 }

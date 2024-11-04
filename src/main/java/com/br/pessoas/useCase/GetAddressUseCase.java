@@ -14,6 +14,6 @@ public class GetAddressUseCase {
     }
 
     public List<AddressEntity> getAllPersonAddress(Long personId, AddressRepositoryImpl repository){
-        return toEntity.convertList(repository.getAllPersonAdress(personId));
+        return toEntity.convert(repository.findAllByPersonId(personId));
     }
 }

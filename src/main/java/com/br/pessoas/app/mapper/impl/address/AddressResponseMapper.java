@@ -1,4 +1,4 @@
-package com.br.pessoas.app.mapper.impl;
+package com.br.pessoas.app.mapper.impl.address;
 
 import com.br.pessoas.app.dto.AddressResponse;
 import com.br.pessoas.app.mapper.Mapper;

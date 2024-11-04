@@ -1,4 +1,4 @@
-package com.br.pessoas.app.facade;
+package com.br.pessoas.app.service.facade;
 
 import java.util.List;
 /**

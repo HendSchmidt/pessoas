@@ -1,10 +1,10 @@
 package com.br.pessoas.app.service;
 
-import com.br.pessoas.app.dto.AddressResponse;
 import com.br.pessoas.app.dto.AddressRequest;
-import com.br.pessoas.app.mapper.impl.AddressResponseMapper;
+import com.br.pessoas.app.dto.AddressResponse;
+import com.br.pessoas.app.mapper.impl.address.AddressResponseMapper;
+import com.br.pessoas.app.service.facade.CreateAddressFacade;
 import com.br.pessoas.infra.dataProvider.client.AddressClient;
-import com.br.pessoas.app.facade.CreateAddressFacade;
 import com.br.pessoas.infra.dataProvider.repository.impl.AddressRepositoryImpl;
 import com.br.pessoas.useCase.GetAddressUseCase;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,9 +28,9 @@ public class AddressService {
     private CreateAddressFacade getAddressFacade;
 
     @Transactional
-    public AddressResponse createAddress(final Long personId,final AddressRequest request){
+    public AddressResponse createAddress(final AddressRequest request){
         CreateAddressFacade createAddressFacade = new CreateAddressFacade();
-        createAddressFacade.setFacadeRules(repository, client, personId, request);
+        createAddressFacade.setFacadeRules(repository, client, request);
         return responseMapper.mapperToSource(createAddressFacade.execute());
     }
 

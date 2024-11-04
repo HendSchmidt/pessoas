@@ -1,4 +1,4 @@
-package com.br.pessoas.app.facade;
+package com.br.pessoas.app.service.facade;
 
 import com.br.pessoas.app.dto.AddressRequest;
 import com.br.pessoas.domain.entity.AddressEntity;
@@ -20,10 +20,9 @@ public class CreateAddressFacade implements Facade<AddressEntity> {
 	private  AddressRequest request;
 	private AddressModelToAddressEntityConverter converterToEntity;
 
-	public void setFacadeRules(final AddressRepositoryImpl repository, final AddressClient client, final Long personId, final AddressRequest request) {
+	public void setFacadeRules(final AddressRepositoryImpl repository, final AddressClient client, final AddressRequest request) {
 		this.repository = repository;
 		this.client = client;
-		this.personId = personId;
 		this.request = request;
 		this.createAddressUseCase = new CreateAddressUseCase();
 		this.converterToEntity = new AddressModelToAddressEntityConverter();
@@ -32,7 +31,7 @@ public class CreateAddressFacade implements Facade<AddressEntity> {
 	@Override
 	public AddressEntity execute() {
 		Optional<AddressModel> address = client.getAddress(request.getCep());
-		address.get().setPersonId(personId);
+		address.get().setPersonId(request.getPersonId());
 		address.get().setComplemento(request.getComplemento());
 		return createAddressUseCase.createAdress(converterToEntity.convert(address.get()), repository);
 	}

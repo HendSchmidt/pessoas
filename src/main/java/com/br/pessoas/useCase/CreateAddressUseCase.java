@@ -7,8 +7,8 @@ import com.br.pessoas.infra.dataProvider.repository.impl.AddressRepositoryImpl;
 
 public class CreateAddressUseCase {
 
-    private AddressEntityToAddressModelConverter toModel;
-    private AddressModelToAddressEntityConverter toEntity;
+    private final AddressEntityToAddressModelConverter toModel;
+    private final AddressModelToAddressEntityConverter toEntity;
 
     public CreateAddressUseCase() {
         this.toModel = new AddressEntityToAddressModelConverter();

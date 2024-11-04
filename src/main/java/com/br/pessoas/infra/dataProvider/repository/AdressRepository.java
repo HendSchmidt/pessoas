@@ -23,6 +23,6 @@ public interface AdressRepository extends JpaRepository<AddressModel, Long> {
  * @return Uma lista de objetos {@link AddressModel} associados à pessoa fornecida.
  *         Se nenhum endereço for encontrado, uma lista vazia será retornada.
  */
-    @Query("SELECT a FROM AddressModel a WHERE a.personId = :personId")
-    List<AddressModel> getAllPersonAdress(@Param("personId") Long personId);
+    @Query("SELECT a FROM AddressModel a WHERE a.personId =:personId")
+    List<AddressModel> findAllByPersonId(@Param("personId")final Long personId);
 }

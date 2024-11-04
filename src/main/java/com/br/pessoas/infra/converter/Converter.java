@@ -23,7 +23,7 @@ public interface Converter<Target, Source> {
  * @param sourceList A lista de objetos de origem a serem convertidos. Esta lista não deve ser nula.
  * @return Uma lista de objetos de destino convertidos.
  */
-    default List<Target> convertList(List<Source> sourceList) {
+    default List<Target> convert(List<Source> sourceList) {
         return sourceList.parallelStream()
                 .map(this::convert)
                 .collect(Collectors.toList());

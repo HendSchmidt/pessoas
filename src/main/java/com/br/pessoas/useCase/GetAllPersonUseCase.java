@@ -17,6 +17,6 @@ public class GetAllPersonUseCase {
     }
 
     public List<PersonEntity> getAllPerson (PersonRepositoryImpl repository){
-        return toEntity.convertList(repository.getAll());
+        return toEntity.convert(repository.getAll());
     }
 }

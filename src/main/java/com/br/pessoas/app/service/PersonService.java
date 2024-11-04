@@ -1,16 +1,11 @@
 package com.br.pessoas.app.service;
 
-import com.br.pessoas.app.dto.AddressRequest;
-import com.br.pessoas.app.dto.AddressResponse;
-import com.br.pessoas.app.dto.PersonRequest;
-import com.br.pessoas.app.dto.PersonResponse;
-import com.br.pessoas.app.mapper.impl.PersonResponseMapper;
-import com.br.pessoas.app.mapper.impl.PersonResquestMapper;
-import com.br.pessoas.domain.entity.AddressEntity;
+import com.br.pessoas.app.dto.*;
+import com.br.pessoas.app.mapper.impl.person.PersonResponseMapper;
+import com.br.pessoas.app.mapper.impl.person.PersonResquestMapper;
 import com.br.pessoas.infra.dataProvider.repository.impl.PersonRepositoryImpl;
 import com.br.pessoas.useCase.CreatePersonUseCase;
 import com.br.pessoas.useCase.GetAllPersonUseCase;
-import com.br.pessoas.useCase.GetPersonUseCase;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,6 +17,12 @@ public class PersonService {
 
     @Autowired
     private AddressService addressService;
+
+    @Autowired
+    private TelephoneService telephoneService;
+
+    @Autowired
+    private EmailService emailService;
 
     @Autowired
     private PersonResquestMapper requestMapper;
@@ -40,18 +41,42 @@ public class PersonService {
 
     public List<PersonResponse> getAllPerson(){
         final GetAllPersonUseCase getAllPerson = new GetAllPersonUseCase();
-        return responseMapper.mapperToSource(getAllPerson.getAllPerson(repositoryImpl))
-                .stream().parallel().peek(response -> response.setAdressResponseList(getAllAddressForPerson(response.getId()))).toList();
+        List<PersonResponse> personResponses = responseMapper.mapperToSource(getAllPerson.getAllPerson(repositoryImpl));
+
+        return personResponses.parallelStream().peek(this::setAllPersonComplements).toList();
     }
 
-    public PersonResponse createPersonAddress(final Long personId, final AddressRequest addressRequest) {
-        final GetPersonUseCase useCase = new  GetPersonUseCase();
-        useCase.getPerson(personId, repositoryImpl);
-        addressService.createAddress(personId, addressRequest);
-        return null;
+    private void setAllPersonComplements(PersonResponse personResponse) {
+        personResponse.setEmailResponseList(getAllEmailForPerson(personResponse.getId()));
+        personResponse.setTelephoneResponseList(getAllTelephoneForPerson(personResponse.getId()));
+        personResponse.setAdressResponseList(getAllAddressForPerson(personResponse.getId()));
+    }
+
+    public AddressResponse createPersonAddress(final Long personId, final AddressRequest addressRequest) {
+        addressRequest.setPersonId(personId);
+        return addressService.createAddress(addressRequest);
+    }
+
+    public TelephoneResponse createPersonTelephone(final Long personId, final TelephoneRequest telephoneRequest){
+        telephoneRequest.setPersonId(personId);
+        return telephoneService.create(telephoneRequest);
+    }
+
+    public EmailResponse createPersonEmail(final Long personId, final EmailRequest emailRequest){
+        emailRequest.setPersonId(personId);
+        return emailService.create(emailRequest);
     }
 
     private List<AddressResponse> getAllAddressForPerson(final Long personId){
         return addressService.getAllPersonAddress(personId);
     }
+
+    private List<EmailResponse> getAllEmailForPerson(final Long personId){
+        return emailService.findAllByPersonId(personId);
+    }
+
+    private List<TelephoneResponse> getAllTelephoneForPerson(final Long personId){
+        return telephoneService.findAllByPersonId(personId);
+    }
+
 }

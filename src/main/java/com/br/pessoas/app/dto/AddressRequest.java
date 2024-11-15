@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class AddressRequest {
-    private Long personId;
     private String cep;
     private String complemento;
+	private String description;
 }

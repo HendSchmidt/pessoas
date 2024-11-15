@@ -4,6 +4,7 @@ import com.br.pessoas.app.dto.EmailRequest;
 import com.br.pessoas.app.dto.EmailResponse;
 import com.br.pessoas.app.mapper.impl.email.EmailRequestMapper;
 import com.br.pessoas.app.mapper.impl.email.EmailResponseMapper;
+import com.br.pessoas.domain.entity.EmailEntity;
 import com.br.pessoas.infra.dataProvider.repository.impl.EmailRepositoryImpl;
 import com.br.pessoas.useCase.CreateEmailUseCase;
 import com.br.pessoas.useCase.GetEmailUseCase;
@@ -26,9 +27,11 @@ public class EmailService {
 	private EmailRepositoryImpl repository;
 
 	@Transactional
-	public EmailResponse create(final EmailRequest request){
+	public EmailResponse create(final EmailRequest request, final Long personId){
 		final CreateEmailUseCase useCase = new CreateEmailUseCase();
-		return responseMapper.mapperToSource(useCase.create(requestMapper.mapperToTarget(request), repository));
+		final EmailEntity entity = requestMapper.mapperToTarget(request);
+		entity.setPersonId(personId);
+		return responseMapper.mapperToSource(useCase.create(entity, repository));
 	}
 
 	public List<EmailResponse> findAllByPersonId(final Long personId){

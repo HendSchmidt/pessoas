@@ -19,6 +19,7 @@ public class AddressModel extends AbstractPersistable<Long> {
     private String complemento;
     private String bairro;
     private String numero;
-    private String cidade; //localidade
+    private String cidade;
     private String uf;
+    private String description;
 }

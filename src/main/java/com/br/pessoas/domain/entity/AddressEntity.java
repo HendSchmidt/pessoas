@@ -8,13 +8,14 @@ public class AddressEntity {
     private String complemento;
     private String bairro;
     private String numero;
-    private String cidade; //localidade
+    private String cidade;
     private String uf;
+    private String description;
 
     public AddressEntity() {
     }
 
-    public AddressEntity(Long personId, Long id, String cep, String logradouro, String complemento, String bairro, String numero, String cidade, String uf) {
+    public AddressEntity(Long personId, Long id, String cep, String logradouro, String complemento, String bairro, String numero, String cidade, String uf, String description) {
         this.personId = personId;
         this.id = id;
         this.cep = cep;
@@ -96,5 +97,13 @@ public class AddressEntity {
 
     public void setUf(String uf) {
         this.uf = uf;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

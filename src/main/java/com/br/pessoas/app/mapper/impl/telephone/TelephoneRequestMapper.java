@@ -10,11 +10,11 @@ public class TelephoneRequestMapper implements Mapper<TelephoneEntity, Telephone
 
 	@Override
 	public TelephoneEntity mapperToTarget(TelephoneRequest request) {
-		return new TelephoneEntity(request.getStateCode(), request.getPhoneNumber(),request.getPersonId(), request.getId(), request.getCountryCode());
+		return new TelephoneEntity(request.getStateCode(), request.getPhoneNumber(), request.getId(), request.getCountryCode(), request.getDescription());
 	}
 
 	@Override
 	public TelephoneRequest mapperToSource(TelephoneEntity entity) {
-		return new TelephoneRequest(entity.getId(), entity.getPersonId(), entity.getPhoneNumber(), entity.getStateCode(), entity.getCountryCode());
+		return new TelephoneRequest(entity.getId(), entity.getPhoneNumber(), entity.getStateCode(), entity.getCountryCode(), entity.getDescription());
 	}
 }

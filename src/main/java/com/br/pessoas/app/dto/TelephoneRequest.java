@@ -9,8 +9,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class TelephoneRequest {
 	private Long id;
-	private Long personId;
 	private String countryCode;
 	private String stateCode;
 	private String phoneNumber;
+	private String description;
 }

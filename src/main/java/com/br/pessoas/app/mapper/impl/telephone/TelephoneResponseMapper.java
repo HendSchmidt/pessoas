@@ -9,12 +9,11 @@ import org.springframework.stereotype.Component;
 public class TelephoneResponseMapper implements Mapper<TelephoneEntity, TelephoneResponse> {
 	@Override
 	public TelephoneEntity mapperToTarget(TelephoneResponse response) {
-		return new TelephoneEntity(response.getStateCode(), response.getPhoneNumber(),response.getPersonId(), response.getId(), response.getCountryCode());
-
+		return new TelephoneEntity(response.getStateCode(), response.getPhoneNumber(),response.getPersonId(), response.getCountryCode(), response.getDescription());
 	}
 
 	@Override
 	public TelephoneResponse mapperToSource(TelephoneEntity entity) {
-		return new TelephoneResponse (entity.getId(), entity.getPersonId(), entity.getPhoneNumber(), entity.getStateCode(), entity.getCountryCode());
+		return new TelephoneResponse (entity.getId(), entity.getPersonId(), entity.getPhoneNumber(), entity.getStateCode(), entity.getCountryCode(), entity.getDescription());
 	}
 }

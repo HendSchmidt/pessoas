@@ -4,15 +4,23 @@ public class EmailEntity {
 	private Long id;
 	private Long personId;
 	private String email;
+	private String description;
 
 	public EmailEntity() {
 	}
 
-	public EmailEntity(Long id, Long personId, String email) {
+	public EmailEntity(Long id, Long personId, String email, String description) {
         this.id = id;
         this.personId = personId;
         this.email = email;
+		this.description = description;
     }
+
+	public EmailEntity(Long id, String email,  String description) {
+		this.id = id;
+		this.email = email;
+		this.description = description;
+	}
 
 	public String getEmail() {
 		return email;
@@ -36,6 +44,14 @@ public class EmailEntity {
 
 	public void setPersonId(Long personId) {
 		this.personId = personId;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	@Override

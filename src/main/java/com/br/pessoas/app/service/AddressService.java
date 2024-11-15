@@ -28,9 +28,9 @@ public class AddressService {
     private CreateAddressFacade getAddressFacade;
 
     @Transactional
-    public AddressResponse createAddress(final AddressRequest request){
+    public AddressResponse createAddress(final AddressRequest request, final Long personId){
         CreateAddressFacade createAddressFacade = new CreateAddressFacade();
-        createAddressFacade.setFacadeRules(repository, client, request);
+        createAddressFacade.setFacadeRules(repository, client, request, personId);
         return responseMapper.mapperToSource(createAddressFacade.execute());
     }
 

@@ -17,4 +17,5 @@ public class TelephoneModel extends AbstractPersistable<Long> {
 	private String countryCode;
 	private String stateCode;
 	private String phoneNumber;
+	private String description;
 }

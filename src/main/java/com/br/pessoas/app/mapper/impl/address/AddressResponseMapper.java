@@ -12,13 +12,13 @@ public class AddressResponseMapper implements Mapper<AddressEntity, AddressRespo
         return new AddressEntity(response.getPersonId(), response.getId()
                 ,response.getCep(), response.getLogradouro()
                 ,response.getComplemento(), response.getBairro()
-                ,response.getNumero(), response.getCidade(), response.getUf());
+                ,response.getNumero(), response.getCidade(), response.getUf(), response.getDescription());
     }
 
     @Override
     public AddressResponse mapperToSource(AddressEntity entity) {
         return new AddressResponse(entity.getPersonId(), entity.getId(), entity.getCep()
                 , entity.getLogradouro(), entity.getComplemento(), entity.getBairro()
-                , entity.getNumero(), entity.getCidade(), entity.getUf());
+                , entity.getNumero(), entity.getCidade(), entity.getUf(), entity.getDescription());
     }
 }

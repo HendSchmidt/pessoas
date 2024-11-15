@@ -9,6 +9,6 @@ public class AddressEntityToAddressModelConverter implements Converter<AddressMo
     public AddressModel convert(AddressEntity entity) {
         return new AddressModel(entity.getPersonId(), entity.getCep(), entity.getLogradouro()
                 , entity.getComplemento(), entity.getBairro(), entity.getNumero()
-                , entity.getCidade(), entity.getUf());
+                , entity.getCidade(), entity.getUf(), entity.getDescription());
     }
 }

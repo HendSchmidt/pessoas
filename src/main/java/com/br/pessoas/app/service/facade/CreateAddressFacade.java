@@ -20,19 +20,23 @@ public class CreateAddressFacade implements Facade<AddressEntity> {
 	private  AddressRequest request;
 	private AddressModelToAddressEntityConverter converterToEntity;
 
-	public void setFacadeRules(final AddressRepositoryImpl repository, final AddressClient client, final AddressRequest request) {
+	public void setFacadeRules(final AddressRepositoryImpl repository, final AddressClient client, final AddressRequest request, final Long personId) {
 		this.repository = repository;
 		this.client = client;
 		this.request = request;
+		this.personId = personId;
 		this.createAddressUseCase = new CreateAddressUseCase();
 		this.converterToEntity = new AddressModelToAddressEntityConverter();
 	}
 
 	@Override
 	public AddressEntity execute() {
-		Optional<AddressModel> address = client.getAddress(request.getCep());
-		address.get().setPersonId(request.getPersonId());
+		/*TODO
+		*  Validar optional e lançar exceção de negocio*/
+		final Optional<AddressModel> address = client.getAddress(request.getCep());
+		address.get().setPersonId(personId);
 		address.get().setComplemento(request.getComplemento());
+		address.get().setDescription(request.getDescription());
 		return createAddressUseCase.createAdress(converterToEntity.convert(address.get()), repository);
 	}
 }

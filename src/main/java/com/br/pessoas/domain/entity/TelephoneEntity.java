@@ -6,16 +6,26 @@ public class TelephoneEntity {
 	private String countryCode;
 	private String stateCode;
 	private String phoneNumber;
+	private String description;
 
 	public TelephoneEntity() {
 	}
 
-	public TelephoneEntity(String stateCode, String phoneNumber, Long personId, Long id, String countryCode) {
+	public TelephoneEntity(String stateCode, String phoneNumber, Long personId, Long id, String countryCode, String description) {
 		this.stateCode = stateCode;
 		this.phoneNumber = phoneNumber;
 		this.personId = personId;
 		this.id = id;
 		this.countryCode = countryCode;
+		this.description = description;
+	}
+
+	public TelephoneEntity(String stateCode, String phoneNumber, Long id, String countryCode, String description) {
+		this.stateCode = stateCode;
+		this.phoneNumber = phoneNumber;
+		this.id = id;
+		this.countryCode = countryCode;
+		this.description = description;
 	}
 
 	public String getCountryCode() {
@@ -56,6 +66,14 @@ public class TelephoneEntity {
 
 	public void setStateCode(String stateCode) {
 		this.stateCode = stateCode;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	@Override

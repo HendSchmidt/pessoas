@@ -4,6 +4,7 @@ import com.br.pessoas.app.dto.TelephoneRequest;
 import com.br.pessoas.app.dto.TelephoneResponse;
 import com.br.pessoas.app.mapper.impl.telephone.TelephoneRequestMapper;
 import com.br.pessoas.app.mapper.impl.telephone.TelephoneResponseMapper;
+import com.br.pessoas.domain.entity.TelephoneEntity;
 import com.br.pessoas.infra.dataProvider.repository.impl.TelephoneRepositoryImpl;
 import com.br.pessoas.useCase.CreateTelephoneUseCase;
 import com.br.pessoas.useCase.GetTelephoneUseCase;
@@ -25,9 +26,11 @@ public class TelephoneService {
 	private TelephoneRepositoryImpl repository;
 
 	@Transactional
-	public TelephoneResponse create(final TelephoneRequest request) {
+	public TelephoneResponse create(final TelephoneRequest request, final Long personId) {
 		final CreateTelephoneUseCase useCase = new CreateTelephoneUseCase();
-		return responseMapper.mapperToSource(useCase.create(requestMapper.mapperToTarget(request),repository));
+		final TelephoneEntity entity = requestMapper.mapperToTarget(request);
+		entity.setPersonId(personId);
+		return responseMapper.mapperToSource(useCase.create(entity,repository));
 	}
 
 	public List<TelephoneResponse> findAllByPersonId(final Long personId) {

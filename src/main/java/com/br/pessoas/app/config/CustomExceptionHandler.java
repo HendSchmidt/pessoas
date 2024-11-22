@@ -1,15 +1,59 @@
 package com.br.pessoas.app.config;
 
-import com.br.pessoas.useCase.exception.PersonCreateException;
+import com.br.pessoas.app.dto.ErrorResponse;
+import com.br.pessoas.useCase.exception.*;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.ControllerAdvice;
-import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.*;
 
 @ControllerAdvice
 public class CustomExceptionHandler {
-	@ExceptionHandler(PersonCreateException.class)
-	public ResponseEntity<?> personCreateException(PersonCreateException ex) {
-		return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(ex.getMessage());
+	@ExceptionHandler(value = PersonCreateException.class)
+	@ResponseStatus(HttpStatus.ACCEPTED)
+	public @ResponseBody ErrorResponse personCreateException(final PersonCreateException ex){
+		return new ErrorResponse(HttpStatus.ACCEPTED.value(), ex.getLocalizedMessage(), ex.getStackTrace());
+	}
+
+	@ExceptionHandler(value = PersonRecoveryException.class)
+	@ResponseStatus(HttpStatus.NOT_FOUND)
+	public @ResponseBody ErrorResponse personRecoveryException(final PersonRecoveryException ex){
+		return new ErrorResponse(HttpStatus.NOT_FOUND.value(), ex.getLocalizedMessage(), ex.getStackTrace());
+	}
+
+	@ExceptionHandler(value = AddressCreateException.class)
+	@ResponseStatus(HttpStatus.ACCEPTED)
+	public @ResponseBody ErrorResponse addressCreateException(final AddressCreateException ex){
+		return new ErrorResponse(HttpStatus.ACCEPTED.value(), ex.getLocalizedMessage(), ex.getStackTrace());
+	}
+
+	@ExceptionHandler(value = AddressRecoveryException.class)
+	@ResponseStatus(HttpStatus.NOT_FOUND)
+	public @ResponseBody ErrorResponse addressRecoveryException(final AddressRecoveryException ex){
+		return new ErrorResponse(HttpStatus.NOT_FOUND.value(), ex.getLocalizedMessage(), ex.getStackTrace());
+	}
+
+
+	@ExceptionHandler(value = EmailCreateException.class)
+	@ResponseStatus(HttpStatus.ACCEPTED)
+	public @ResponseBody ErrorResponse emailCreateException(final EmailCreateException ex){
+		return new ErrorResponse(HttpStatus.ACCEPTED.value(), ex.getLocalizedMessage(), ex.getStackTrace());
+	}
+
+	@ExceptionHandler(value = EmailRecoveryException.class)
+	@ResponseStatus(HttpStatus.NOT_FOUND)
+	public @ResponseBody ErrorResponse emailRecoveryException(final EmailRecoveryException ex){
+		return new ErrorResponse(HttpStatus.NOT_FOUND.value(), ex.getLocalizedMessage(), ex.getStackTrace());
+	}
+
+
+	@ExceptionHandler(value = TelephoneCreateException.class)
+	@ResponseStatus(HttpStatus.ACCEPTED)
+	public @ResponseBody ErrorResponse telephoneCreateException(final TelephoneCreateException ex){
+		return new ErrorResponse(HttpStatus.ACCEPTED.value(), ex.getLocalizedMessage(), ex.getStackTrace());
+	}
+
+	@ExceptionHandler(value = TelephoneRecoveryException.class)
+	@ResponseStatus(HttpStatus.NOT_FOUND)
+	public @ResponseBody ErrorResponse telephoneRecoveryException(final TelephoneRecoveryException ex){
+		return new ErrorResponse(HttpStatus.NOT_FOUND.value(), ex.getLocalizedMessage(), ex.getStackTrace());
 	}
 }

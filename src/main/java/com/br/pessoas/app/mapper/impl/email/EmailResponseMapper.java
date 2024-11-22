@@ -10,11 +10,11 @@ public class EmailResponseMapper implements Mapper<EmailEntity, EmailResponse> {
 
 	@Override
 	public EmailEntity mapperToTarget(EmailResponse response) {
-		return new EmailEntity(response.getId(), response.getPersonId(), response.getEmail()) ;
+		return new EmailEntity(response.getId(), response.getPersonId(), response.getEmail(), response.getDescription()) ;
 	}
 
 	@Override
 	public EmailResponse mapperToSource(EmailEntity entity) {
-		return new EmailResponse(entity.getId(), entity.getPersonId(), entity.getEmail());
+		return new EmailResponse(entity.getId(), entity.getPersonId(), entity.getEmail(), entity.getDescription());
 	}
 }

@@ -15,7 +15,7 @@ public class CreateAddressUseCase {
         this.toEntity = new AddressModelToAddressEntityConverter();
     }
 
-    public AddressEntity createAdress(AddressEntity entity, AddressRepositoryImpl repository){
+    public AddressEntity createAdress(final AddressEntity entity, final AddressRepositoryImpl repository){
         return toEntity.convert(repository.save(toModel.convert(entity)));
     }
 

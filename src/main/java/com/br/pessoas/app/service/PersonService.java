@@ -53,18 +53,15 @@ public class PersonService {
     }
 
     public AddressResponse createPersonAddress(final Long personId, final AddressRequest addressRequest) {
-        addressRequest.setPersonId(personId);
-        return addressService.createAddress(addressRequest);
+        return addressService.createAddress(addressRequest, personId);
     }
 
     public TelephoneResponse createPersonTelephone(final Long personId, final TelephoneRequest telephoneRequest){
-        telephoneRequest.setPersonId(personId);
-        return telephoneService.create(telephoneRequest);
+        return telephoneService.create(telephoneRequest, personId);
     }
 
     public EmailResponse createPersonEmail(final Long personId, final EmailRequest emailRequest){
-        emailRequest.setPersonId(personId);
-        return emailService.create(emailRequest);
+        return emailService.create(emailRequest, personId);
     }
 
     private List<AddressResponse> getAllAddressForPerson(final Long personId){

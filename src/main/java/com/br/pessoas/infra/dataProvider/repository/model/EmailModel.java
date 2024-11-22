@@ -15,4 +15,5 @@ import org.springframework.data.jpa.domain.AbstractPersistable;
 public class EmailModel extends AbstractPersistable<Long> {
 	private Long personId;
 	private String email;
+	private String description;
 }

@@ -7,6 +7,6 @@ import com.br.pessoas.infra.dataProvider.repository.model.EmailModel;
 public class EmailModelToEntityConverter implements Converter<EmailEntity, EmailModel> {
 	@Override
 	public EmailEntity convert(EmailModel model) {
-		return new EmailEntity(model.getId(), model.getPersonId(), model.getEmail());
+		return new EmailEntity(model.getId(), model.getPersonId(), model.getEmail(), model.getDescription());
 	}
 }

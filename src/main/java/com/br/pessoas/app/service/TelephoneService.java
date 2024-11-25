@@ -7,7 +7,7 @@ import com.br.pessoas.app.mapper.impl.telephone.TelephoneResponseMapper;
 import com.br.pessoas.domain.entity.TelephoneEntity;
 import com.br.pessoas.infra.dataProvider.repository.impl.TelephoneRepositoryImpl;
 import com.br.pessoas.useCase.CreateTelephoneUseCase;
-import com.br.pessoas.useCase.GetTelephoneUseCase;
+import com.br.pessoas.useCase.FindTelephoneUseCase;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -33,9 +33,9 @@ public class TelephoneService {
 		return responseMapper.mapperToSource(useCase.create(entity,repository));
 	}
 
-	public List<TelephoneResponse> findAllByPersonId(final Long personId) {
-		final GetTelephoneUseCase useCase = new GetTelephoneUseCase();
-		return responseMapper.mapperToSource(useCase.findAllByPersonId(personId, repository));
+	public List<TelephoneResponse> findAll(final Long personId) {
+		final FindTelephoneUseCase useCase = new FindTelephoneUseCase();
+		return responseMapper.mapperToSource(useCase.findAll(personId, repository));
 	}
 
 }

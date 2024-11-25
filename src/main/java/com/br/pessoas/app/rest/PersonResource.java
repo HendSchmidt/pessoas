@@ -17,12 +17,12 @@ public class PersonResource {
 
     @PostMapping
     public ResponseEntity<PersonResponse> createPerson(@RequestBody PersonRequest request) {
-        return ResponseEntity.ok(service.createPerson(request));
+        return ResponseEntity.ok(service.create(request));
     }
 
     @GetMapping
-    public ResponseEntity<List<PersonResponse>> getAllPerson(){
-        return ResponseEntity.ok(service.getAllPerson());
+    public ResponseEntity<List<PersonResponse>> findAllPerson(){
+        return ResponseEntity.ok(service.findAllPerson());
     }
 
     @GetMapping("/{cpf}")
@@ -32,16 +32,16 @@ public class PersonResource {
 
     @PostMapping("/{personId}/address")
     public ResponseEntity<AddressResponse> createPersonAddress(@PathVariable Long personId, @RequestBody AddressRequest request) {
-        return ResponseEntity.ok(service.createPersonAddress(personId, request));
+        return ResponseEntity.ok(service.createAddress(personId, request));
     }
 
     @PostMapping("/{personId}/telephone")
     public ResponseEntity<TelephoneResponse> createPersonTelephone(@PathVariable Long personId, @RequestBody TelephoneRequest request) {
-        return ResponseEntity.ok(service.createPersonTelephone(personId, request));
+        return ResponseEntity.ok(service.createTelephone(personId, request));
     }
 
     @PostMapping("/{personId}/email")
     public ResponseEntity<EmailResponse> createPersonEmail(@PathVariable Long personId, @RequestBody EmailRequest request) {
-        return ResponseEntity.ok(service.createPersonEmail(personId, request));
+        return ResponseEntity.ok(service.createEmail(personId, request));
     }
 }

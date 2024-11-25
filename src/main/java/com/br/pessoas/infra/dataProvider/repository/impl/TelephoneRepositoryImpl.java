@@ -13,18 +13,19 @@ import java.util.List;
 @Component
 public class TelephoneRepositoryImpl {
 
-	@Autowired @Lazy
+	@Autowired
+	@Lazy
 	private TelephoneRepository repository;
 
 	public TelephoneModel save(final TelephoneModel model) {
 		return repository.save(model);
 	}
 
-	public List<TelephoneModel> findAllByPersonId(final Long personId) {
+	public List<TelephoneModel> findAll(final Long personId) {
 		TelephoneModel model = new TelephoneModel();
 		model.setPersonId(personId);
 		Example<TelephoneModel> example = Example.of(model);
 
-        return repository.findAll(example, Sort.by(Sort.Order.asc("countryCode")));
-    }
+		return repository.findAll(example, Sort.by(Sort.Order.asc("countryCode")));
+	}
 }

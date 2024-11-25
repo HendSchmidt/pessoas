@@ -7,7 +7,7 @@ import com.br.pessoas.app.mapper.impl.email.EmailResponseMapper;
 import com.br.pessoas.domain.entity.EmailEntity;
 import com.br.pessoas.infra.dataProvider.repository.impl.EmailRepositoryImpl;
 import com.br.pessoas.useCase.CreateEmailUseCase;
-import com.br.pessoas.useCase.GetEmailUseCase;
+import com.br.pessoas.useCase.FindEmailUseCase;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -34,8 +34,8 @@ public class EmailService {
 		return responseMapper.mapperToSource(useCase.create(entity, repository));
 	}
 
-	public List<EmailResponse> findAllByPersonId(final Long personId){
-		final GetEmailUseCase useCase = new GetEmailUseCase();
-		return responseMapper.mapperToSource(useCase.findAllByPersonId(personId, repository));
+	public List<EmailResponse> findAll(final Long personId){
+		final FindEmailUseCase useCase = new FindEmailUseCase();
+		return responseMapper.mapperToSource(useCase.findAll(personId, repository));
 	}
 }

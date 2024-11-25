@@ -14,34 +14,35 @@ import java.util.Optional;
 
 @Component
 public class PersonRepositoryImpl {
-    @Autowired @Lazy
-    private PersonRepository repository;
+	@Autowired
+	@Lazy
+	private PersonRepository repository;
 
-    public PersonModel save(PersonModel source) {
-        return repository.save(source);
-    }
+	public PersonModel save(PersonModel source) {
+		return repository.save(source);
+	}
 
-    public PersonModel get(Long id) {
-        return repository.findById(id).orElseThrow(() -> new PersonRecoveryException("Pessoa não encontrada."));
-    }
+	public PersonModel find(Long id) {
+		return repository.findById(id).orElseThrow(() -> new PersonRecoveryException("Pessoa não encontrada."));
+	}
 
-    public List<PersonModel> getAll() {
-        return repository.findAll();
-    }
+	public List<PersonModel> findAllPerson() {
+		return repository.findAll();
+	}
 
-    public Optional<PersonModel> findByCpf(final String cpf) {
-        final PersonModel personModel = new PersonModel();
-        personModel.setCpf(cpf);
-        final Example<PersonModel> example = Example.of(personModel);
+	public Optional<PersonModel> findByCpf(final String cpf) {
+		final PersonModel personModel = new PersonModel();
+		personModel.setCpf(cpf);
+		final Example<PersonModel> example = Example.of(personModel);
 
-        return repository.findBy(example, FluentQuery.FetchableFluentQuery::first);
-    }
+		return repository.findBy(example, FluentQuery.FetchableFluentQuery::first);
+	}
 
-    public boolean existsByCpf(final String cpf){
-        final PersonModel personModel = new PersonModel();
-        personModel.setCpf(cpf);
-        final Example<PersonModel> example = Example.of(personModel);
+	public boolean exists(final String cpf) {
+		final PersonModel personModel = new PersonModel();
+		personModel.setCpf(cpf);
+		final Example<PersonModel> example = Example.of(personModel);
 
-        return repository.exists(example);
-    }
+		return repository.exists(example);
+	}
 }

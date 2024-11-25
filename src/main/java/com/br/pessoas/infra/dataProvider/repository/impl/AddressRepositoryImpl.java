@@ -13,18 +13,19 @@ import java.util.List;
 @Component
 public class AddressRepositoryImpl {
 
-    @Autowired @Lazy
-    private AdressRepository repository;
+	@Autowired
+	@Lazy
+	private AdressRepository repository;
 
-    public AddressModel save(AddressModel source) {
-        return repository.save(source);
-    }
+	public AddressModel save(AddressModel source) {
+		return repository.save(source);
+	}
 
-    public List<AddressModel> findAllByPersonId(Long personId){
-        AddressModel model = new AddressModel();
-        model.setPersonId(personId);
-        Example<AddressModel> example = Example.of(model);
+	public List<AddressModel> findAll(Long personId) {
+		AddressModel model = new AddressModel();
+		model.setPersonId(personId);
+		Example<AddressModel> example = Example.of(model);
 
-        return repository.findAll(example, Sort.by(Sort.Order.asc("cidade")));
-    }
+		return repository.findAll(example, Sort.by(Sort.Order.asc("cidade")));
+	}
 }

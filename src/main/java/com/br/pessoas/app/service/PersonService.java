@@ -6,11 +6,17 @@ import com.br.pessoas.app.mapper.impl.person.PersonResquestMapper;
 import com.br.pessoas.infra.dataProvider.repository.impl.PersonRepositoryImpl;
 import com.br.pessoas.useCase.CreatePersonUseCase;
 import com.br.pessoas.useCase.GetAllPersonUseCase;
+import com.br.pessoas.useCase.exception.GetPersonByCpfUseCase;
+import com.br.pessoas.useCase.exception.PersonRecoveryException;
+import com.br.pessoas.useCase.exception.VerifyPersonExistsUseCase;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
+
+import static java.lang.Boolean.TRUE;
 
 @Service
 public class PersonService {
@@ -36,7 +42,20 @@ public class PersonService {
     @Transactional
     public PersonResponse createPerson(PersonRequest request){
         final CreatePersonUseCase create = new CreatePersonUseCase();
+        final VerifyPersonExistsUseCase verifyPersonExistsUseCase = new VerifyPersonExistsUseCase();
+
+        if(verifyPersonExistsUseCase.exists(request.getCpf(), repositoryImpl)) throw new PersonRecoveryException("Já existe uma pessoa cadastrada com esse CPF.");
+
         return responseMapper.mapperToSource(create.createPerson(requestMapper.mapperToTarget(request), repositoryImpl));
+    }
+
+    public PersonResponse findByCpf(final String cpf){
+        final GetPersonByCpfUseCase getPersonByCpfUseCase = new GetPersonByCpfUseCase();
+
+        PersonResponse personResponse = responseMapper.mapperToSource(getPersonByCpfUseCase.findByCpf(cpf, repositoryImpl));
+        setAllPersonComplements(personResponse);
+
+        return personResponse;
     }
 
     public List<PersonResponse> getAllPerson(){

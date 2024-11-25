@@ -14,15 +14,4 @@ import java.util.List;
  * Além disso, inclui um método de consulta personalizado para recuperar todos os endereços associados a uma pessoa específica.
  */
 @Repository
-public interface AdressRepository extends JpaRepository<AddressModel, Long> {
-
-/**
- * Recupera todos os endereços associados a uma pessoa específica.
- *
- * @param personId O identificador exclusivo da pessoa.
- * @return Uma lista de objetos {@link AddressModel} associados à pessoa fornecida.
- *         Se nenhum endereço for encontrado, uma lista vazia será retornada.
- */
-    @Query("SELECT a FROM AddressModel a WHERE a.personId =:personId")
-    List<AddressModel> findAllByPersonId(@Param("personId")final Long personId);
-}
+public interface AdressRepository extends JpaRepository<AddressModel, Long> {}

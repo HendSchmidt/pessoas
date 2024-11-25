@@ -58,6 +58,18 @@ public class PersonEntity {
         this.idade = idade;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+
+        PersonEntity that = (PersonEntity) o;
+        return getCpf().equals(that.getCpf());
+    }
+
+    @Override
+    public int hashCode() {
+        return getCpf().hashCode();
+    }
 
     @Override
     public String toString() {

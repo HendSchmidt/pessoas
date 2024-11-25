@@ -25,6 +25,11 @@ public class PersonResource {
         return ResponseEntity.ok(service.getAllPerson());
     }
 
+    @GetMapping("/{cpf}")
+    public ResponseEntity<PersonResponse> findByCpf(@PathVariable String cpf){
+        return ResponseEntity.ok(service.findByCpf(cpf));
+    }
+
     @PostMapping("/{personId}/address")
     public ResponseEntity<AddressResponse> createPersonAddress(@PathVariable Long personId, @RequestBody AddressRequest request) {
         return ResponseEntity.ok(service.createPersonAddress(personId, request));

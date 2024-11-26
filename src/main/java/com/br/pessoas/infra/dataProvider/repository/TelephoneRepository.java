@@ -9,8 +9,4 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface TelephoneRepository extends JpaRepository<TelephoneModel, Long> {
-
-	@Query("SELECT t FROM TelephoneModel t WHERE t.personId =:personId")
-	List<TelephoneModel> findAllByPersonId(@Param("personId") final Long personId);
-}
+public interface TelephoneRepository extends JpaRepository<TelephoneModel, Long> {}

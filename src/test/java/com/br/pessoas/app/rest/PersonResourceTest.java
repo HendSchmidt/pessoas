@@ -49,11 +49,11 @@ public class PersonResourceTest {
 
 	@Test
 	public void shouldReturnPersonResponseWhenCreatingPersonWithValidInput() {
-		Mockito.when(service.createPerson(request)).thenReturn(personResponse);
+		Mockito.when(service.create(request)).thenReturn(personResponse);
     	ResponseEntity<PersonResponse> response = resource.createPerson(request);
 
    	 	assertEquals(HttpStatus.OK, response.getStatusCode());
     	assertEquals(personResponse, response.getBody());
-		Mockito.verify(service, Mockito.times(1)).createPerson(request);
+		Mockito.verify(service, Mockito.times(1)).create(request);
 	}
 }

@@ -6,11 +6,11 @@ import com.br.pessoas.infra.dataProvider.repository.model.PersonModel;
 import org.springframework.stereotype.Component;
 
 @Component
-public class PersonEntityToPersonModelConverter implements Converter<PersonModel, PersonEntity> {
+public class PersonEntityToModelConverter implements Converter<PersonModel, PersonEntity> {
     @Override
-    public PersonModel convert(PersonEntity source) {
+    public PersonModel convert(PersonEntity entity) {
         return new PersonModel(
-                source.getNome(), source.getSobrenome(),
-                source.getCpf(),source.getIdade());
+                entity.getNome(), entity.getSobrenome(),
+                entity.getCpf(),entity.getIdade());
     }
 }

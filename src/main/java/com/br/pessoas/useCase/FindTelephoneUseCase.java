@@ -6,14 +6,14 @@ import com.br.pessoas.infra.dataProvider.repository.impl.TelephoneRepositoryImpl
 
 import java.util.List;
 
-public class GetTelephoneUseCase {
+public class FindTelephoneUseCase {
 	private final TelephoneModelToEntityConverter toEntityConverter;
 
-	public GetTelephoneUseCase() {
+	public FindTelephoneUseCase() {
 		this.toEntityConverter = new TelephoneModelToEntityConverter();
 	}
 
-	public List<TelephoneEntity> findAllByPersonId(Long personId, TelephoneRepositoryImpl repository) {
-		return toEntityConverter.convert(repository.findAllByPersonId(personId));
+	public List<TelephoneEntity> findAll(Long personId, TelephoneRepositoryImpl repository) {
+		return toEntityConverter.convert(repository.findAll(personId));
 	}
 }

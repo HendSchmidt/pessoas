@@ -21,6 +21,10 @@ public class TelephoneRepositoryImpl {
 		return repository.save(model);
 	}
 
+	public void delete(final List<Long> listId) {
+		repository.deleteAllById(listId);
+	}
+
 	public List<TelephoneModel> findAll(final Long personId) {
 		TelephoneModel model = new TelephoneModel();
 		model.setPersonId(personId);

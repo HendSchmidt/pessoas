@@ -12,6 +12,4 @@ public class AppConfigutation {
 	public RestTemplate restTemplate() {
 		return new RestTemplate();
 	}
-
-
 }

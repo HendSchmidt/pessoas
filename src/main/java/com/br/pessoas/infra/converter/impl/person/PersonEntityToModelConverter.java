@@ -9,8 +9,10 @@ import org.springframework.stereotype.Component;
 public class PersonEntityToModelConverter implements Converter<PersonModel, PersonEntity> {
     @Override
     public PersonModel convert(PersonEntity entity) {
-        return new PersonModel(
+        PersonModel model = new  PersonModel(
                 entity.getNome(), entity.getSobrenome(),
                 entity.getCpf(),entity.getIdade());
+        model.setId(entity.getId());
+        return model;
     }
 }

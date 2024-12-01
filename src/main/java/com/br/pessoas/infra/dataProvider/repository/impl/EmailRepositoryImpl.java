@@ -21,6 +21,10 @@ public class EmailRepositoryImpl {
 		return repository.save(model);
 	}
 
+	public void delete(final List<Long> listId) {
+		repository.deleteAllById(listId);
+	}
+
 	public List<EmailModel> findAll(final Long personId) {
 		EmailModel model = new EmailModel();
 		model.setPersonId(personId);

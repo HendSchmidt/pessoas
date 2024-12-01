@@ -21,6 +21,10 @@ public class AddressRepositoryImpl {
 		return repository.save(source);
 	}
 
+	public void delete(final List<Long> listId) {
+		repository.deleteAllById(listId);
+	}
+
 	public List<AddressModel> findAll(Long personId) {
 		AddressModel model = new AddressModel();
 		model.setPersonId(personId);

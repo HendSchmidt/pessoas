@@ -1,15 +1,13 @@
 package com.br.pessoas.infra.dataProvider.repository.model;
 
 import jakarta.persistence.Entity;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.data.jpa.domain.AbstractPersistable;
+import org.springframework.lang.Nullable;
+
 
 @Entity
-@Getter
-@Setter
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class PersonModel extends AbstractPersistable<Long> {
@@ -17,4 +15,10 @@ public class PersonModel extends AbstractPersistable<Long> {
     private String sobrenome;
     private String cpf;
     private Integer idade;
+
+    @Override
+    public void setId(@Nullable Long id) {
+        super.setId(id);
+    }
+
 }

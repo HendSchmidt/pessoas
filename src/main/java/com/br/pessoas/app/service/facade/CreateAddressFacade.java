@@ -35,6 +35,7 @@ public class CreateAddressFacade implements Facade<AddressEntity> {
 		 *  Validar optional e lançar exceção de negocio*/
 		final Optional<AddressModel> address = client.findAddress(request.getCep());
 		address.get().setPersonId(personId);
+		address.get().setNumero(request.getNumber());
 		address.get().setComplemento(request.getComplemento());
 		address.get().setDescription(request.getDescription());
 		return createAddressUseCase.create(converterToEntity.convert(address.get()), repository);

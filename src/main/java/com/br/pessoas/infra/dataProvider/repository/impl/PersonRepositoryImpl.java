@@ -22,6 +22,14 @@ public class PersonRepositoryImpl {
 		return repository.save(source);
 	}
 
+	public PersonModel update(PersonModel source) {
+		return repository.save(source);
+	}
+
+	public void delete(final Long id) {
+        repository.deleteById(id);
+    }
+
 	public PersonModel find(Long id) {
 		return repository.findById(id).orElseThrow(() -> new PersonRecoveryException("Pessoa não encontrada."));
 	}

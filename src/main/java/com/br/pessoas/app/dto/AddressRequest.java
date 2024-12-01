@@ -11,4 +11,5 @@ public class AddressRequest {
     private String cep;
     private String complemento;
 	private String description;
+	private String number;
 }

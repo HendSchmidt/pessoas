@@ -25,6 +25,7 @@ public class AddressEntity {
         this.numero = numero;
         this.cidade = cidade;
         this.uf = uf;
+        this.description = description;
     }
 
     public Long getPersonId() {

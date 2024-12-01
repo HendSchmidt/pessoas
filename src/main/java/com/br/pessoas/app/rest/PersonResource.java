@@ -30,6 +30,7 @@ public class PersonResource {
         return ResponseEntity.ok(service.findByCpf(cpf));
     }
 
+
     @PostMapping("/{personId}/address")
     public ResponseEntity<AddressResponse> createPersonAddress(@PathVariable Long personId, @RequestBody AddressRequest request) {
         return ResponseEntity.ok(service.createAddress(personId, request));
@@ -44,4 +45,5 @@ public class PersonResource {
     public ResponseEntity<EmailResponse> createPersonEmail(@PathVariable Long personId, @RequestBody EmailRequest request) {
         return ResponseEntity.ok(service.createEmail(personId, request));
     }
+
 }

@@ -67,8 +67,7 @@ public class PersonService {
 
 		return "Pessoa e complementos deletados";
 	}
-
-	@Cacheable(value = "PersonResponse", key = "#cpf" )
+	@Cacheable(value = "PersonResponseByCpf", key = "#cpf" )
 	public PersonResponse findByCpf(final String cpf) {
 		final FindPersonByCpfUseCase findPersonByCpfUseCase = new FindPersonByCpfUseCase();
 
@@ -77,7 +76,7 @@ public class PersonService {
 
 		return personResponse;
 	}
-
+	@Cacheable(value = "PersonResponse")
 	public List<PersonResponse> findAllPerson() {
 		final FindAllPersonUseCase useCase = new FindAllPersonUseCase();
 		List<PersonResponse> personResponses = responseMapper.mapperToSource(useCase.findAllPerson(repositoryImpl));

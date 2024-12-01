@@ -5,6 +5,7 @@ import com.br.pessoas.infra.dataProvider.client.dto.AddressClientResponse;
 import com.br.pessoas.infra.dataProvider.repository.model.AddressModel;
 import com.br.pessoas.useCase.exception.AddressRecoveryException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestClientException;
@@ -27,6 +28,7 @@ public class AddressClient {
 		this.toAddressModel = new AddressClientResponseToModelConverter();
 	}
 
+	@Cacheable(value = "AddressClientResponse", key = "#cep" )
 	public Optional<AddressModel> findAddress(final String cep) {
 		try {
 			ResponseEntity<AddressClientResponse> response = restTemplate.getForEntity(URI.create("https://opencep.com/v1/" + cep), AddressClientResponse.class);
